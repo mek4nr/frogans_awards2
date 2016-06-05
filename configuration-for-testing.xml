@@ -1,0 +1,202 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<frogans-player-configuration-for-testing>
+	<test-frogans-site address='test*peluche'>
+
+        <frogans-site-root-directory>
+
+            <ucsr-path network='LOCAL'>
+                <platform>windows</platform>
+                <folder>\frogans_awards2\dressmyteddy</folder>
+            </ucsr-path>
+
+        </frogans-site-root-directory>
+
+        <fsdl-documents>
+            <version>3.0</version>
+            <encoding>UTF-8</encoding>
+        </fsdl-documents>
+
+        <home-slide-file>/home.fsdl</home-slide-file>
+
+    </test-frogans-site>
+
+</frogans-player-configuration-for-testing>
+
+
+<!--
+
+    In order to add your own test Frogans address(es) in the configuration
+    file, please follow the guidelines below.
+
+    Note: In the configuration file, no spaces are allowed at the start or the
+    end of either an attribute value or the text characters in an element.
+
+
+    <frogans-player-configuration-for-testing> element
+    ==================================================
+
+        The <frogans-player-configuration-for-testing> element represents the
+        root element of the configuration file.
+
+        This element has no attributes.
+
+        This element contains between 1 and 16 <test-frogans-site> child
+        elements.
+
+
+    <test-frogans-site> element
+    ===========================
+
+        The <test-frogans-site> element represents a Frogans site associated
+        with a test Frogans address.
+
+        This element has one mandatory attribute "address" representing the
+        Frogans address. The attribute value is in the 'network-name*site-name'
+        pattern where:
+            - 'network-name' is 'test'
+            - 'site-name' can contain up to 28 ASCII characters in the range
+              from 'a' to 'z', from '0' to '9' inclusive, and the '-' character
+              (no spaces allowed)
+              'site-name' is compliant with the IFAP specification version 1.1
+              (https://www.frogans.org/en/resources/ifap/access.html). As a
+              result of section 4.4. concerning connector characters:
+              - '-' cannot be the first nor the last character of 'site-name'
+              - Two or more consecutive '-' cannot be included in 'site-name'
+
+        This element contains 3 child elements: <frogans-site-root-directory>,
+            <fsdl-documents> and <home-slide-file>.
+
+
+    <frogans-site-root-directory> element
+    =====================================
+
+        The <frogans-site-root-directory> element represents the Frogans site
+        root directory.
+
+        This element has no attributes.
+
+        This element contains one <ucsr-path> child element.
+
+
+    <ucsr-path> element
+    ===================
+
+        The <ucsr-path> element represents the UCSR path to the server hosting
+        the test Frogans site, as described in the UCSR specification
+        (https://www.frogans.org/en/resources/ucsr/access.html).
+
+        This element has one mandatory attribute "network" representing the
+        UCSR network on which the server hosting the Frogans site is available.
+        The attribute value is currently either:
+            - 'LOCAL' if the Frogans site is hosted on the local system
+            - 'IP-DNS-TCP-HTTP' if the Frogans site is hosted on the Internet,
+               using an HTTP server.
+
+        If network='LOCAL', then this element contains two child elements:
+        <platform> and <folder>.
+
+            <platform> element
+            ==================
+
+            The <platform> element represents the local platform. This element
+            has no attributes and only contains text characters. Possible
+            values are: 'windows', 'macosx', or 'linux' depending on the local
+            platform (respectively Windows, Mac OS X, or Linux).
+
+            <folder> element
+            ================
+
+            The <folder> element represents the folder containing the Frogans
+            site on the local platform. This element has no attributes and only
+            contains text characters. Value can be either absolute or relative
+            to the Frogans Player directory. On the Windows platform, the
+            directory separator is '\'. On the Mac OS X and Linux platforms,
+            the directory separator is '/'.
+
+        If network='IP-DNS-TCP-HTTP', then this element contains four child
+        elements: <location>, <domain-name>, <port>, and <directory>.
+
+            <location> element
+            ==================
+
+            The <location> element represents the location of the server on the
+            Internet. This element has no attributes and only contains text
+            characters. The only possible value are: 'public' and 'private'
+            depending on the location of the server. Note: when configuring a
+            Frogans address of a public or a dedicated Frogans network, the
+            only possible value is 'public'.
+
+            <domain-name> element
+            =====================
+
+            The <domain-name> element represents the domain name of the server
+            on the Internet. This element has no attributes and only contains
+            text characters. The value contains between 6 and 128 characters.
+            The value is a fully qualified domain name conforming to the
+            'hostname' string defined in RFC 2396 (see RFC 2396, section 3.2.2.
+            Server-based Naming Authority), but where the 'hostname' string can
+            end with the '.' character. As a result, the 'domain' string does
+            not contain a literal IPv4 address or a literal IPv6 address.
+
+            <port> element
+            ==============
+
+            The <port> element element represents the TCP port of the server on
+            the  Internet. This element has no attributes and only contains
+            text characters. The value is an integer between 1 and 65535. Note:
+            when configuring a Frogans address of a public or a dedicated
+            Frogans network, the only possible value is 80.
+
+            <directory> element
+            ===================
+
+            The <directory> element represents the path to the directory
+            containing the Frogans site on the server on the Internet.
+            This element has no attributes and only contains text characters.
+            Value is path conforming to the 'path-absolute' string defined in
+            RFC 3986 (see RFC 3986, section 3.3. Path), but where additional
+            restrictions apply on the 'pchar' string. As a result, the value
+            starts with, but may not end with a '/', and may contain
+            subdirectories separated by '/'.
+
+
+    <fsdl-documents> element
+    ========================
+
+        The <fsdl-documents> element represents the properties of the FSDL 
+        documents of the Frogans site.
+
+        This element has no attributes.
+
+        This element contains 2 child elements: <version> and <encoding>.
+
+            <version> element
+            =================
+
+            The <version> element represents the version of the FSDL
+            specification used to develop the Frogans site. This element
+            has no attributes and only contains text characters. The only
+            possible value is currently: '3.0'.
+
+            <encoding> element
+            ==================
+
+            The <encoding> element represents the method used to encode the
+            FSDL documents of the Frogans site. This element has no attributes
+            and only contains text characters. Possible values are: 'UTF-8' or
+            'UTF-16'.
+
+
+    <home-slide-file> element
+    =========================
+
+        The <home-slide-file> element represents the file, in the Frogans site
+        root directory, corresponding to the home slide of the Frogans site.
+
+        This element has no attributes and only contains text characters. The
+        value conforms to the "name" attribute of the <file> element defined
+        in the FSDL specification
+        (https://www.frogans.org/en/resources/fsdl/access.html).
+
+-->
