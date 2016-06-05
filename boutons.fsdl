@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<frogans-fsdl version='3.0'>
+	<!-- This FSDL document and its auxiliary files are part of a sample Frogans site
+		 provided by the OP3FT to help you create your own Frogans sites. You are
+		 free to use, copy, distribute, modify, adapt, or share this sample Frogans site. --> 
+
+
+	<!-- 1. Prepare a drawing resource, set a relief, and add a layer to the lead and vignette representations -->
+	<resdraw resid='resdraw1' size='560,400' figure='roundrect' stroke='off' round='100,100' color='#002f66' />
+
+    <setrelief reliefid='setrelief1'>
+		<relief rpos='-10,-10' color='#000000' blur='10' opacity='50' />
+		<relief rpos='10,10' color='#ffffff' blur='10' opacity='25' />
+    </setrelief>
+
+	<layer layerid='layer1' leapout='all' resref='resdraw1' reliefref='setrelief1' opacity='75' pos='0,0' align='left-top' combine='add' /> 
+
+	<setfont fontid='setfont2'>
+		<font scripts='default' pfont='112-2-sans-r' height='20' color='#000000' />
+	</setfont>
+
+	
+	<file fileid='file2' nature='static' name='/slide2.fsdl' />
+
+
+	
+	<resdraw resid='resdraw2' size='80,50' figure='rect' stroke='off' color='#ff8000' />
+	<resdraw resid='resdraw3' size='130,50' figure='roundrect' stroke='off' round='50,50' color='#00ff00' />
+	<restext resid='restext3' size='50,70' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
+		<text>&#x2192;</text>
+	</restext>
+	<restext resid='restext4' size='200,70' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
+		<text>ok</text>
+	</restext>
+		
+	<button buttonid='button1' goto='slide' fileref='file2' >
+		<layer layerid='layer5' leapout='lead' resref='resdraw2' pos='220,280' combine='clip' visible='nofocus'/> 
+		<layer layerid='layer6' leapout='lead' resref='resdraw3' pos='220,280' combine='clip' visible='focus'/> 
+		<layer layerid='layer7' leapout='lead' resref='restext3' pos='220,282' combine='clip' visible='always' angle='180'/> 
+	</button>
+
+	<button buttonid='button2' goto='slide' fileref='file2' >
+		<layer layerid='layer8' leapout='lead' resref='resdraw2'  pos='500,280' combine='clip' visible='nofocus'/> 
+		<layer layerid='layer9' leapout='lead' resref='resdraw3'  pos='500,280' combine='clip' visible='focus'/> 
+		<layer layerid='layer10' leapout='lead' resref='restext3' pos='500,282' combine='clip' visible='always'/> 
+	</button>
+
+	<button buttonid='button3' goto='slide' fileref='file2' >
+		<layer layerid='layer11' leapout='lead' resref='resdraw2'  pos='300,280' combine='clip' visible='nofocus'/> 
+		<layer layerid='layer12' leapout='lead' resref='resdraw3'  pos='300,280' combine='clip' visible='focus'/> 
+		<layer layerid='layer13' leapout='lead' resref='restext4' pos='300,282' combine='clip' visible='always'/> 
+	</button>
+</frogans-fsdl>
