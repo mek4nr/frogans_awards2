@@ -12,11 +12,23 @@
 	<resimage resid='img_1' size='340,480' fileref="img_lapin" />
 	<layer layerid='lay_02' leapout='all' resref='img_1' pos='250,240' align='center-middle' combine='add' />
 
-	<resdraw resid='head' size='340,240' figure='rect' thick="3" stroke='on' color='#ff0000' />
-	<layer layerid='lay_03' leapout='all' resref='head' pos='250,0' align='center-top' combine='add' />
 
-	<resdraw resid='breast' size='340,240' figure='rect' thick="3" stroke='on' color='#0000ff' />
-	<layer layerid='lay_05' leapout='all' resref='breast' pos='250,240' align='center-top' combine='add' />
+
+	<resdraw resid='head_visible' size='340,240' figure='rect' stroke='off' color='#FFFFFF' />
+	<resdraw resid='head_focus' size='340,240' figure='rect' stroke='off' color='#000000' />
+
+	<button buttonid='head_button' goto='frogans-site' address="test*head">
+		<layer layerid='head_01' opacity="51" leapout='lead' resref='head_visible' pos='250,0' align='center-top' combine='clip' visible="nofocus" />
+		<layer layerid='head_02' opacity="30"  leapout='lead' resref='head_focus' pos='250,0' align='center-top' combine='clip' visible="focus" />
+	</button>
+
+	<resdraw resid='breast_visible' size='340,240' figure='rect' stroke='off' color='#FFFFFF' />
+	<resdraw resid='breast_focus' size='340,240' figure='rect' stroke='off' color='#000000' />
+
+	<button buttonid='breast_button' goto='frogans-site' address="test*breast">
+		<layer layerid='breast_01' opacity="51" leapout='lead' resref='breast_visible' pos='250,0' align='center-top' combine='clip' visible="nofocus" />
+		<layer layerid='breast_02' opacity="30"  leapout='lead' resref='breast_focus' pos='250,0' align='center-top' combine='clip' visible="focus" />
+	</button>
 
 	<!-- General  row -->
 	<setfont fontid='setfont2'>
@@ -34,7 +46,6 @@
 	<restext resid='restext4' size='80,160' orientation='h-ttb-ltr' fontref='setfont3' talign='center'>
 		<text>&#x2192;</text>
 	</restext>
-
 
 	<file fileid='row' nature='static' name='/bear.fsdl' />
 	<!-- Left row -->
