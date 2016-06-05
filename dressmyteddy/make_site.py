@@ -7,7 +7,7 @@ result_tab = "teddy"
 def generate_site(nanimos, parties):
 
     try:
-        template = open("template-membre.sfdl.j2", "r").read()
+        template = open("template-membre.fsdl.j2", "r").read()
     except IOError:
         print("File sfdl not found")
         exit(1)

@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='utf-8'?>
+<frogans-fsdl version='3.0'>
+	<setfont fontid="font_welcome">
+		<font scripts="default" pfont="112-12-serif-i" height="8" color="#000000" />
+	</setfont>
+
+	<resdraw resid='bg_1' size='640,480' figure='roundrect' round="48,48" stroke='off' color='#ffffff' />
+	<layer layerid='lay_01' leapout='all' resref='bg_1' pos='320,240' align='center-middle' combine='add' />
+
+	<file fileid="img_lapin" nature="static" name="/img/bear.png" />
+
+	<resimage resid='img_1' size='340,480' fileref="img_lapin" />
+	<layer layerid='lay_02' leapout='all' resref='img_1' pos='250,240' align='center-middle' combine='add' />
+
+	<resdraw resid='head' size='340,240' figure='rect' thick="3" stroke='on' color='#ff0000' />
+	<layer layerid='lay_03' leapout='all' resref='head' pos='250,0' align='center-top' combine='add' />
+
+	<resdraw resid='breast' size='340,240' figure='rect' thick="3" stroke='on' color='#0000ff' />
+	<layer layerid='lay_05' leapout='all' resref='breast' pos='250,240' align='center-top' combine='add' />
+
+	<!-- General  row -->
+	<setfont fontid='setfont2'>
+		<font scripts='default' pfont='112-2-sans-r' height='20' color='#000000' />
+	</setfont>
+	<setfont fontid='setfont3'>
+		<font scripts='default' pfont='112-2-sans-r' height='20' color='#ffffff' />
+	</setfont>
+
+	<resdraw resid='resdraw2' size='80,160' figure='rect' stroke='off' color='#ffffff' />
+	<resdraw resid='resdraw3' size='80,160' figure='rect' stroke='off' color='#000000' />
+	<restext resid='restext3' size='80,160' orientation='h-ttb-ltr' fontref='setfont2' talign='center'>
+		<text>&#x2192;</text>
+	</restext>
+	<restext resid='restext4' size='80,160' orientation='h-ttb-ltr' fontref='setfont3' talign='center'>
+		<text>&#x2192;</text>
+	</restext>
+
+
+	<file fileid='row' nature='static' name='/rabbit.fsdl' />
+	<!-- Left row -->
+	<respath resid="rect_row_left" size="80,160" crop="auto" color="#00ffff" stroke="off" spread="on">
+		Ju:2048,0;
+		Li:410,0;
+		Co:0,410,0,0;
+		Li:0,1638;
+		Co:410,2048,0,2048;
+		Li:2048,2048;
+		Li:2048,0;
+	</respath>
+
+	<resdraw resid='left_raw' size='80,160' figure='rect' stroke='off' color='#00ffff' />
+	<layer layerid='lay_06' leapout='all' resref='left_raw' pos='40,160' align='center-top' combine='add' />
+
+
+	<button buttonid='left_button' goto='slide' fileref='row' >
+		<layer layerid='layer5' leapout='lead' resref='resdraw2' pos='40,160' align='center-top' combine='clip' visible='nofocus'/>
+		<layer layerid='layer6' leapout='lead' resref='resdraw3' pos='40,160' align='center-top' combine='clip' visible='focus'/>
+		<layer layerid='layer7' leapout='lead' resref='restext3' pos='40,280' align='center-top' combine='clip' visible='nofocus' angle='180'/>
+		<layer layerid='layer11' leapout='lead' resref='restext4' pos='40,280' align='center-top' combine='clip' visible='focus' angle='180'/>
+	</button>
+
+	<!-- End Left row -->
+
+	<!-- Right row -->
+	<resdraw resid='right_raw' size='80,160' figure='rect' stroke='off' color='#00ffff' />
+	<layer layerid='lay_07' leapout='all' resref='right_raw' pos='460,160' align='center-top' combine='add' />
+
+
+	<button buttonid='button2' goto='slide' fileref='row' >
+		<layer layerid='layer8' leapout='lead' resref='resdraw2'  pos='460,160' align='center-top' combine='clip' visible='nofocus'/>
+		<layer layerid='layer9' leapout='lead' resref='resdraw3'  pos='460,160' align='center-top' combine='clip' visible='focus'/>
+		<layer layerid='layer10' leapout='lead' resref='restext3' pos='460,210' align='center-top' combine='clip' visible='nofocus'/>
+		<layer layerid='layer12' leapout='lead' resref='restext4' pos='460,210' align='center-top' combine='clip' visible='focus'/>
+	</button>
+	<!-- End Right row -->
+
+	<restext resid="welcome_txt" size="180,160" orientation="h-ttb-ltr" fontref="font_welcome">
+		<text>WELCOME TO DRESS MY TEDDY</text>
+	</restext>
+	<layer layerid='lay_08' leapout='all' resref='welcome_txt' pos='540,20' align='center-top' combine='add' />
+
+	<restext resid="basket_txt" size="180,160" orientation="h-ttb-ltr" fontref="font_welcome">
+		<text>Basket : 40 €</text>
+	</restext>
+	<layer layerid='lay_09' leapout='all' resref='basket_txt' pos='540,400' align='center-top' combine='add' />
+</frogans-fsdl>
