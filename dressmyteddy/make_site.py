@@ -4,27 +4,31 @@ from jinja2 import Template
 result_tab = "teddy"
 
 
-def generate_site(nanimos, parties):
+def generate_site(nanimos, parts):
 
     try:
-        template = open("template-membre.sfdl.j2", "r").read()
+        template = open("template-membre.fsdl.j2", "r").read()
     except IOError:
         print("File sfdl not found")
         exit(1)
 
     for nanimo in nanimos:
-        for partie in parties:
+        for p in parts:
             tplt = Template(template)
-            result = tplt.render({"nanimo": nanimo, "partie": partie})
-            result_file = open("{}-{}-{}.fsdl".format(result_tab, nanimo, partie), 'w')
+            index_part = parts.index(p)
+            index_next = parts[(index_part + 1) % len(parts)]
+            index_prev = parts[(index_part - 1)]
+            # print("prev={} index={} next={}".format(index_prev, index_part, index_next))
+            result = tplt.render({"nanimo": nanimo, "part": p,
+                                  "previous": index_prev,
+                                  "next": index_next})
+            result_file = open("{}-{}-{}.fsdl".format(result_tab, nanimo, p), 'w')
             result_file.write(result)
             result_file.close()
 
 if __name__ == '__main__':
     nanimos = ["lapin", "ours"]
-    tete = ["casquette", "chapeau"]
-    haut = ["chemine", "t-shirt"]
-    bas = ["short", "pentalon"]
-    generate_site(nanimos, tete)
-    generate_site(nanimos, haut)
-    generate_site(nanimos, bas)
+    head = ["casquette", "chapeau", "lunette"]
+    body = ["chemise", "t-shirt", "salopette"]
+    generate_site(nanimos, head)
+    generate_site(nanimos, body)
