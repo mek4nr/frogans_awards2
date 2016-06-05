@@ -27,8 +27,8 @@ def generate_site(nanimos, parts):
             result_file.close()
 
 if __name__ == '__main__':
-    nanimos = ["lapin", "ours"]
-    head = ["casquette", "chapeau", "lunette"]
-    body = ["chemise", "t-shirt", "salopette"]
+    nanimos = ["rabbit"]
+    head = ["blank", "glass1", "glass2", "hat1", "hat2"]
+    body = ["blank", "dress1", "tshort1"]
     generate_site(nanimos, head)
     generate_site(nanimos, body)
