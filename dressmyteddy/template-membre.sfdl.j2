@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<frogans-fsdl version='3.0'>
+
+	<resdraw resid='resdraw1' size='560,400' figure='roundrect' stroke='off' round='100,100' color='#002f66' />
+
+    <setrelief reliefid='setrelief1'>
+		<relief rpos='-10,-10' color='#000000' blur='10' opacity='50' />
+		<relief rpos='10,10' color='#ffffff' blur='10' opacity='25' />
+    </setrelief>
+
+	<layer layerid='layer1' leapout='all' resref='resdraw1' reliefref='setrelief1' opacity='75' pos='0,0' align='left-top' combine='add' /> 
+
+	<setfont fontid='setfont1'>
+		<font scripts='default' pfont='112-2-sans-r' height='40' color='#ffffff' />
+	</setfont>
+
+	<restext resid='restext1' size='480,255' orientation='h-ttb-ltr' fontref='setfont1' talign='center'>
+        <text>{{nanimo}} {{partie}} </text>
+	</restext>
+
+</frogans-fsdl>
